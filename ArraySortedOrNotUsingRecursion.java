@@ -1,4 +1,4 @@
-public class ArraySortedOrNotUsingRecursion {
+ class ArraySortedOrNotUsingRecursion {
     public static void main(String[] args) {
         int[] arr={1,2,7,4,5};
         System.out.println(Sort(arr,0));

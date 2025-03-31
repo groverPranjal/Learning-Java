@@ -246,7 +246,5 @@ public class LinkedList {
     //    ll.print();
     ll.deleteNthNode(3);
     ll.print();
-
-      
     }
 }
