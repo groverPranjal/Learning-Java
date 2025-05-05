@@ -198,17 +198,49 @@ public class BTreeB {
 
         }
         public static int KAncestor(Node root,int n,int k){
+            if(root==null){
+                return -1;
+            }
             if(root.data==n){
                 return 0;
             }
             int left=KAncestor(root.left, n, k);
-            int right=KAncestor(root.left, n, k);
+            int right=KAncestor(root.right, n, k);
 
             if(left==-1 && right==-1){
                 return -1;
             }
             int max=Math.max(left,right);
+            if(max+1==k){
+                System.out.println(root.data);
+            }
+            return max+1;
         }
+        public static int SumofTree(Node root){
+          if(root==null){
+            return 0;
+          }
+          int left=SumofTree(root.left);
+          int right=SumofTree(root.right);
+          int dat=root.data;
+
+        int newleft=root.left==null?0:root.left.data;
+         int newright=root.right==null?0:root.right.data;
+         
+          root.data=left+right+newleft+newright;
+
+
+          return dat;
+
+        }
+        public static void preorder(Node root){
+            if(root==null){
+                return ;
+            }
+            System.out.print(root.data+" ");
+            preorder(root.left);
+            preorder(root.right);
+         }
     
     public static void main(String[] args) {
     /*       1  
@@ -241,9 +273,11 @@ public class BTreeB {
 
     //   int n1=4;
     //   int n2=5;
-      System.out.println(lca2(root, 6, 7).data);
-      System.out.println(minDist(root, 6,4));
-
+    //   System.out.println(lca2(root, 6, 7).data);
+    //   System.out.println(minDist(root, 6,4));
+      System.out.println(KAncestor(root, 5, 1));
+      SumofTree(root);
+      preorder(root);
 
             
     }
